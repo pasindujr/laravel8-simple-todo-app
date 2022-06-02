@@ -1,12 +1,11 @@
 @extends('layout')
 
 @section('main-content')
-
     <h4 class="pb-3">My Tasks</h4>
 
     <div class="card">
         <div class="card-header">
-            First Task
+            New Task
         </div>
         <div class="card-body">
             <div class="card-text">

@@ -1,18 +1,41 @@
 @extends('layout')
 
 @section('main-content')
-    <h4 class="pb-3">My Tasks</h4>
 
-    <div class="card">
-        <div class="card-header">
-            New Task
+    <div>
+        <div class="float-start">
+            <h4 class="pb-3">Create Tasks</h4>
         </div>
-        <div class="card-body">
-            <div class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam beatae dignissimos eius iusto laborum
-                maxime officia saepe tempora tempore. A architecto commodi consequatur, deleniti libero omnis? Assumenda
-                illo provident temporibus.
-            </div>
+        <div class="float-end">
+            <a href="{{ route('index') }}" class="btn btn-info">All Tasks</a>
         </div>
+        <div class="clearfix"></div>
     </div>
+
+    <div class="card card-body bg-light p-4">
+        <form action="{{ route('task.store') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="title">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" id="exampleInputEmail1" name="description"
+                          rows="5"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Status</label>
+                <select name="status" id="status" class="form-control">
+                    @foreach($statuses as $status)
+                        <option value="{{ $status['value'] }}">{{ $status['label'] }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+
 @endsection

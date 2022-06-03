@@ -46,7 +46,13 @@
                     </div>
                     <div class="float-end">
                         <a href="{{ route('task.edit', $task->id) }}" class="btn btn-success">Edit</a>
-                        <a href="{{ route('task.edit', $task->id) }}" class="btn btn-danger">Delete</a>
+
+                        <form action="{{ route('task.destroy', $task->id) }}" style="display: inline" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+
                     </div>
                     <div class="clearfix"></div>
 

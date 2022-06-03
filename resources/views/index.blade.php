@@ -14,14 +14,26 @@
 
     @foreach($tasks as $task)
         <div class="card">
-            <div class="card-header">
-                {{ $task->title }}
+            <h5 class="card-header">
+
+                @if($task->status == 'Todo')
+                    {{ $task->title }}
+                @else
+                    <del>{{ $task->title }}</del>
+                @endif
+
                 <span class="badge text-bg-warning">{{ $task->created_at->diffForHumans() }}</span>
-            </div>
+            </h5>
             <div class="card-body">
                 <div class="card-text">
                     <div class="float-start">
-                        {{ $task->description }}
+
+                        @if($task->status == 'Todo')
+                            {{ $task->description }}
+                        @else
+                            <del>{{ $task->description }}</del>
+                        @endif
+
                         <br>
 
                         @if($task->status == 'Todo')

@@ -7,7 +7,9 @@
             <h4 class="pb-3">Edit Tasks <span class="badge bg-info">{{ $task->title }}</span></h4>
         </div>
         <div class="float-end">
-            <a href="{{ route('index') }}" class="btn btn-info">All Tasks</a>
+            <a href="{{ route('index') }}" class="btn btn-info">
+                <i class="fa fa-arrow-left"></i>
+                All Tasks</a>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -36,7 +38,13 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{{ route('index') }}" class="btn btn-secondary mr-2">
+                <i class="fa fa-arrow-left"></i>
+                Cancel</a>
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-check"></i>
+                Update
+            </button>
         </form>
     </div>
 

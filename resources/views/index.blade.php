@@ -7,13 +7,16 @@
             <h4 class="pb-3">My Tasks</h4>
         </div>
         <div class="float-end">
-            <a href="{{ route('task.create') }}" class="btn btn-info">Create Task</a>
+            <a href="{{ route('task.create') }}" class="btn btn-info">
+                <i class="fa fa-plus-circle"></i>
+                Create Task</a>
+
         </div>
         <div class="clearfix"></div>
     </div>
 
     @foreach($tasks as $task)
-        <div class="card">
+        <div class="card mt-3">
             <h5 class="card-header">
 
                 @if($task->status == 'Todo')
@@ -45,12 +48,15 @@
                         <small>Last Updated - {{ $task->updated_at->diffForHumans() }}</small>
                     </div>
                     <div class="float-end">
-                        <a href="{{ route('task.edit', $task->id) }}" class="btn btn-success">Edit</a>
+                        <a href="{{ route('task.edit', $task->id) }}" class="btn btn-success">
+                            <i class="fa fa-edit"></i></a>
 
                         <form action="{{ route('task.destroy', $task->id) }}" style="display: inline" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </button>
                         </form>
 
                     </div>
@@ -61,4 +67,14 @@
         </div>
     @endforeach
 
+    @if(count($tasks)==0)
+        <div class="alert alert-danger p-2">
+            No Task Found. Create one task.
+            <br>
+            <br>
+            <a href="{{ route('task.create') }}" class="btn btn-info btn-sm">
+                <i class="fa fa-plus-circle"></i>
+                Create Task</a>
+        </div>
+    @endif
 @endsection
